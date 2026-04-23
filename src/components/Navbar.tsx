@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
-import logoScrolled from "@/assets/logo-2.png";
+import logo from "@/assets/logos/logo.png";
+import logoScrolled from "@/assets/logos/logo-2.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -19,6 +19,11 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   let scrollTimeout: number;
+
+  useEffect(() => {
+    const height = isVisible ? (scrolled ? "68px" : "78px") : "0px";
+    document.documentElement.style.setProperty("--nav-offset", height);
+  }, [isVisible, scrolled]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,9 +73,9 @@ export default function Navbar() {
           : "bg-transparent py-2"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between lg:justify-center lg:gap-x-20 xl:gap-x-32">
         {/* Logo */}
-        <NavLink to="/" className="flex items-center group w-">
+        <NavLink to="/" className="flex items-center group shrink-0">
           <img
             src={scrolled ? logoScrolled : logo}
             alt="Shivaay International"
@@ -78,58 +83,39 @@ export default function Navbar() {
           />
         </NavLink>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.name}
-              to={link.path}
-              className={({ isActive }) =>
-                `text-sm font-bold uppercase tracking-widest transition-all hover:text-amber-500 ${
-                  isActive
-                    ? "text-amber-500 after:w-full"
-                    : scrolled
-                      ? "text-slate-600"
-                      : "text-white/80 hover:text-white"
-                } relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-amber-500 after:transition-all after:duration-300 ${
-                  !link.path.includes(link.name.toLowerCase()) &&
-                  "after:w-0 hover:after:w-full"
-                }`
-              }
-            >
-              {link.name}
-            </NavLink>
-          ))}
-        </div>
+        {/* Navigation & CTA Group for Desktop */}
+        <div className="hidden lg:flex items-center lg:gap-x-20 xl:gap-x-32">
+          {/* Desktop Navigation */}
+          <div className="flex items-center space-x-10 xl:space-x-12">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                end={link.path === "/"}
+                className={({ isActive }) =>
+                  `text-sm font-bold uppercase tracking-widest transition-all hover:text-amber-500 ${
+                    isActive
+                      ? "text-amber-500 after:w-full"
+                      : scrolled
+                        ? "text-slate-600 after:w-0 hover:after:w-full"
+                        : "text-white/80 hover:text-white after:w-0 hover:after:w-full"
+                  } relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-amber-500 after:transition-all after:duration-300`
+                }
+              >
+                {link.name}
+              </NavLink>
+            ))}
+          </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center space-x-4">
-          <Button
-            asChild
-            variant="ghost"
-            className={`rounded-full ${
-              scrolled ? "text-slate-600" : "text-white hover:bg-white/10"
-            }`}
-          >
-            <NavLink
-              to="tel:+919876543210"
-              className="flex items-center space-x-2"
+          {/* Desktop CTA */}
+          <div className="flex items-center">
+            <Button
+              asChild
+              className="px-5 py-2.5 rounded-xl font-bold text-sm tracking-wide bg-[linear-gradient(135deg,#E8C97A_0%,#C18C3C_100%)] text-[#2C1810] shadow-[0_8px_32px_rgba(193,140,60,0.4)] transition-all hover:scale-105 active:scale-95"
             >
-              <Phone size={18} className="text-amber-500" />
-              <span className="font-bold">+91 98765 43210</span>
-            </NavLink>
-          </Button>
-          <Button
-            asChild
-            className="px-4 py-2"
-            style={{
-              background: "linear-gradient(135deg, #D97706 0%, #B45309 100%)",
-              color: "#fff",
-              boxShadow: "0 8px 32px rgba(180,83,9,0.4)",
-            }}
-          >
-            <NavLink to="/contact">Get a Quote</NavLink>
-          </Button>
+              <NavLink to="/contact">Get a Quote</NavLink>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Toggle */}
@@ -157,6 +143,7 @@ export default function Navbar() {
                 <NavLink
                   key={link.name}
                   to={link.path}
+                  end={link.path === "/"}
                   className={({ isActive }) =>
                     `block text-lg font-bold uppercase tracking-widest p-4 rounded-2xl transition-all ${
                       isActive
@@ -169,20 +156,12 @@ export default function Navbar() {
                   {link.name}
                 </NavLink>
               ))}
-              <div className="pt-4 border-t border-slate-100 grid grid-cols-2 gap-4">
-                <Button asChild variant="outline" className="rounded-2xl h-14">
-                  <NavLink to="tel:+919876543210">Call Now</NavLink>
-                </Button>
+              <div className="pt-4 border-t border-slate-100">
                 <Button
                   asChild
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #D97706 0%, #B45309 100%)",
-                    color: "#fff",
-                    boxShadow: "0 8px 32px rgba(180,83,9,0.4)",
-                  }}
+                  className="w-full h-14 rounded-2xl bg-[linear-gradient(135deg,#E8C97A_0%,#C18C3C_100%)] text-[#2C1810] shadow-[0_8px_32px_rgba(193,140,60,0.3)] transition-all active:scale-95"
                 >
-                  <NavLink to="/contact">Quote</NavLink>
+                  <NavLink to="/contact">Get a Quote</NavLink>
                 </Button>
               </div>
             </div>

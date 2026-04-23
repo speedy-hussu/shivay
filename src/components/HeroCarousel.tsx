@@ -17,7 +17,7 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    video: "/src/assets/hero1.mp4",
+    video: "/src/assets/Home/hero1.mp4",
     tag: "Excellence in Export",
     title: "Shivaay",
     subtitle: "International",
@@ -28,7 +28,7 @@ const slides: Slide[] = [
     stat2: { value: "15+", label: "Years Experience" },
   },
   {
-    video: "/src/assets/hero3.mp4",
+    video: "/src/assets/Home/hero3.mp4",
     tag: "Premium Grain Export",
     title: "Quality Grains",
     subtitle: "From India's Heartland",
@@ -39,7 +39,7 @@ const slides: Slide[] = [
     stat2: { value: "ISO", label: "Certified" },
   },
   {
-    video: "/src/assets/hero2.mp4",
+    video: "/src/assets/Home/hero2.mp4",
     tag: "Global Agricultural Excellence",
     title: "From Farm",
     subtitle: "To World",
@@ -72,7 +72,7 @@ export default function HeroCarousel() {
 
   return (
     <div
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative h-dvh flex items-center overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -80,9 +80,6 @@ export default function HeroCarousel() {
       <AnimatePresence mode="wait">
         <motion.div
           key={`bg-${currentSlide}`}
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
           transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0 z-0"
         >
@@ -93,26 +90,18 @@ export default function HeroCarousel() {
               muted
               loop
               playsInline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover "
             />
           ) : (
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover opacity-25"
             />
           )}
-          {/* layered overlays for deep warmth */}
-          <div className="absolute inset-0 bg-gradient-to-r from-amber-950/70 via-amber-900/40 to-amber-800/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-amber-950/50 via-transparent to-transparent" />
-          {/* subtle grain texture overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.035]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-              backgroundSize: "200px 200px",
-            }}
-          />
+
+          {/* ── Overlays synced with About Page ── */}
+          <div className="absolute inset-0 bg-black/60" />
         </motion.div>
       </AnimatePresence>
 
@@ -120,8 +109,8 @@ export default function HeroCarousel() {
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-amber-500/40 to-transparent z-10" />
 
       {/* ── Main Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-36 w-full">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-36 mt-10 w-full">
+        <div className="grid lg:grid-cols-12 gap-12 ">
           <div className="lg:col-span-8 xl:col-span-7">
             <AnimatePresence mode="wait">
               <motion.div
@@ -148,7 +137,7 @@ export default function HeroCarousel() {
                   <span
                     style={{
                       background:
-                        "linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%)",
+                        "linear-gradient(135deg, #C18C3C 0%, #E8C97A 55%, #B87333 100%)",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text",
@@ -170,36 +159,25 @@ export default function HeroCarousel() {
                 </motion.p>
 
                 {/* CTAs */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.45 }}
-                  className="flex flex-col sm:flex-row gap-4 mb-14"
-                >
+                <div className="flex items-center gap-3 sm:gap-4 mb-14">
                   <NavLink
                     to={slide.cta.to}
-                    className="group inline-flex items-center justify-center gap-3 h-14 px-8 rounded-2xl font-bold text-sm tracking-wide transition-all duration-300"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #D97706 0%, #B45309 100%)",
-                      color: "#fff",
-                      boxShadow: "0 8px 32px rgba(180,83,9,0.4)",
-                    }}
+                    className="group inline-flex items-center justify-center gap-2 h-11 sm:h-14 px-4 sm:px-8 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm tracking-wide transition-all duration-300 bg-[linear-gradient(135deg,#E8C97A_0%,#C18C3C_100%)] text-[#2C1810] shadow-[0_8px_32px_rgba(193,140,60,0.4)]"
                   >
-                    <Handshake size={20} />
+                    <Handshake size={18} className="hidden sm:block" />
                     {slide.cta.label}
                     <ArrowRight
-                      size={16}
+                      size={14}
                       className="group-hover:translate-x-1 transition-transform duration-300"
                     />
                   </NavLink>
                   <NavLink
                     to="/contact"
-                    className="inline-flex items-center justify-center gap-3 h-14 px-8 rounded-2xl font-bold text-sm tracking-wide border border-amber-600/40 text-amber-200 hover:bg-amber-800/25 backdrop-blur-sm transition-all duration-300"
+                    className="inline-flex items-center justify-center gap-2 h-11 sm:h-14 px-4 sm:px-8 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm tracking-wide border border-amber-600/40 text-amber-200 hover:bg-amber-800/25 backdrop-blur-sm transition-all duration-300"
                   >
-                    Get Free Quote
+                    Get Quote
                   </NavLink>
-                </motion.div>
+                </div>
 
                 {/* Stats row */}
                 <motion.div
@@ -283,13 +261,13 @@ export default function HeroCarousel() {
       {/* ── Nav Arrows ── */}
       <button
         onClick={goToPrevious}
-        className="absolute left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-amber-900/40 backdrop-blur-md border border-amber-700/30 text-amber-200 hover:bg-amber-700/50 hover:border-amber-500/50 transition-all duration-300 flex items-center justify-center"
+        className="absolute left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-amber-900/40 backdrop-blur-md border border-amber-700/30 text-amber-200 hover:bg-amber-700/50 hover:border-amber-500/50 transition-all duration-300 hidden lg:flex items-center justify-center"
       >
         <ChevronLeft size={22} />
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-amber-900/40 backdrop-blur-md border border-amber-700/30 text-amber-200 hover:bg-amber-700/50 hover:border-amber-500/50 transition-all duration-300 flex items-center justify-center"
+        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-amber-900/40 backdrop-blur-md border border-amber-700/30 text-amber-200 hover:bg-amber-700/50 hover:border-amber-500/50 transition-all duration-300 hidden lg:flex items-center justify-center"
       >
         <ChevronRight size={22} />
       </button>

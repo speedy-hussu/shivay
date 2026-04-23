@@ -6,7 +6,6 @@ import {
   Mail,
   Clock,
   Send,
-  ArrowRight,
   Globe,
   Wheat,
   ExternalLink,
@@ -518,8 +517,8 @@ export default function Contact() {
                             color: "rgba(232,201,122,0.5)",
                           }}
                         >
-                          Please fill out the form below and we will get back
-                          to you shortly.
+                          Please fill out the form below and we will get back to
+                          you shortly.
                         </p>
                       </div>
                     </div>
@@ -625,10 +624,14 @@ export default function Contact() {
                             style={{ cursor: "pointer" }}
                           >
                             <option value="">Select a subject</option>
-                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="General Inquiry">
+                              General Inquiry
+                            </option>
                             <option value="Product Quote">Product Quote</option>
                             <option value="Partnership">Partnership</option>
-                            <option value="Export Question">Export Question</option>
+                            <option value="Export Question">
+                              Export Question
+                            </option>
                             <option value="Other">Other</option>
                           </select>
                         </div>
@@ -691,7 +694,7 @@ export default function Contact() {
         </section>
 
         {/* ═══════════════════ FULL-WIDTH MAP ═══════════════════ */}
-        <section className="relative" style={{ height: "520px" }}>
+        <section className="relative h-[350px] lg:h-[520px]">
           <div
             className="absolute top-0 left-0 right-0 h-px z-10 opacity-50"
             style={{ background: GOLD_BAR }}
@@ -712,7 +715,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-8 top-1/2 -translate-y-1/2 z-10 rounded-2xl overflow-hidden"
+            className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 z-10 rounded-2xl overflow-hidden"
             style={{
               width: "300px",
               boxShadow: "0 24px 60px -8px rgba(28,14,8,0.5)",

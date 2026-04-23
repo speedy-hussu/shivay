@@ -9,7 +9,6 @@ import {
   TrendingUp,
   Handshake,
   ArrowRight,
-  CheckCircle,
   Anchor,
   Star,
 } from "lucide-react";
@@ -156,7 +155,7 @@ export default function About() {
         >
           <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
             <video
-              src="/src/assets/About.mp4"
+              src="/src/assets/About/hero.mp4"
               autoPlay
               muted
               loop
@@ -286,7 +285,6 @@ export default function About() {
           </motion.div>
         </section>
 
-
         {/* ════════════════════ WHO WE ARE ════════════════════ */}
         <section className="py-28 bg-white relative overflow-hidden">
           <div
@@ -311,14 +309,14 @@ export default function About() {
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                 className="relative"
               >
-                <div
-                  className="relative rounded-[2.5rem] overflow-hidden"
-                  style={{ aspectRatio: "4/5" }}
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=900&auto=format&fit=crop&q=80"
-                    alt="Premium Basmati Rice"
-                    className="w-full h-full object-cover"
+                <div className="relative rounded-[2.5rem] aspect-square overflow-hidden">
+                  <video
+                    src="/src/assets/About/About-2.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="aspect-square object-cover"
                   />
                   <div
                     className="absolute inset-0"
@@ -421,7 +419,7 @@ export default function About() {
                   <span className="gt">Built Grain by Grain</span>
                 </h2>
                 <div
-                  className="h-0.5 w-16 rounded-full mb-7 opacity-70"
+                  className="h-0.5 w-16 rounded-full mb-2 opacity-70"
                   style={{ background: GOLD_SOLID }}
                 />
                 <p
@@ -453,30 +451,7 @@ export default function About() {
                   traceability, freshness, and authentic provenance in every
                   consignment.
                 </p>
-                <ul className="space-y-3 mb-8">
-                  {[
-                    "Direct farmer relationships across 5 Indian states",
-                    "State-of-the-art processing and sorting facility",
-                    "Dedicated export documentation and compliance team",
-                    "Cold-chain logistics for moisture-sensitive products",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 shi-b"
-                      style={{ fontSize: "1.05rem", color: "#5A3E22" }}
-                    >
-                      <CheckCircle
-                        size={16}
-                        style={{
-                          color: "#C18C3C",
-                          marginTop: "4px",
-                          flexShrink: 0,
-                        }}
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+
                 <NavLink
                   to="/contact"
                   className="inline-flex items-center gap-3 rounded-2xl px-8 py-4 font-bold transition-all duration-300 group"

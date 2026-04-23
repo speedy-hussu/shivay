@@ -65,22 +65,21 @@ export default function Home() {
         <HeroCarousel />
 
         {/* ── Trust Strip ── */}
-        <section style={{ backgroundColor: "#2C1810" }} className="py-5 px-6">
+        <section style={{ backgroundColor: "#2C1810" }} className="py-6 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+            <div className="grid grid-cols-2 lg:flex lg:flex-wrap items-center justify-center gap-x-8 gap-y-5 lg:gap-y-3">
               {[
                 { icon: <Star size={14} />, text: "FSSAI Certified" },
-                { icon: <Shield size={14} />, text: "ISO 9001:2015" },
-                { icon: <Globe size={14} />, text: "40+ Countries Exported" },
-                { icon: <Award size={14} />, text: "Premium Grade Quality" },
+                { icon: <Globe size={14} />, text: "40+ Countries" },
+                { icon: <Award size={14} />, text: "Premium Grade" },
                 { icon: <MapPin size={14} />, text: "Ahmedabad, India" },
               ].map((item) => (
                 <div
                   key={item.text}
-                  className="flex items-center gap-2 text-amber-400/80 text-xs font-bold tracking-widest uppercase"
+                  className="flex items-center gap-2 text-amber-400/80 text-[10px] lg:text-xs font-bold tracking-widest uppercase justify-center lg:justify-start"
                 >
-                  <span className="text-amber-500">{item.icon}</span>
-                  {item.text}
+                  <span className="text-amber-500 shrink-0">{item.icon}</span>
+                  <span className="text-center lg:text-left">{item.text}</span>
                 </div>
               ))}
             </div>
