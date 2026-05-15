@@ -13,7 +13,7 @@ import {
   Zap,
 } from "lucide-react";
 
-import Logo from "@/assets/logos/logo-2.png";
+import Logo from "@/assets/Logos/logo-2.png";
 
 const quickLinks = [
   { label: "Home", to: "/" },

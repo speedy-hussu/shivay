@@ -53,16 +53,6 @@ const CONTACT_INFO = [
   },
 ];
 
-const PRODUCTS_LIST = [
-  "Basmati Rice",
-  "Sharbati Wheat",
-  "Turmeric Powder",
-  "Cumin Seeds",
-  "Coriander Powder",
-  "Chilli Powder",
-  "Other / General Enquiry",
-];
-
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function Contact() {

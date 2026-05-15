@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router";
 import Layout from "@/components/Layout";
+import heroVideo from "@/assets/About/hero.mp4";
+import about2Video from "@/assets/About/About-2.mp4";
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
@@ -155,7 +157,7 @@ export default function About() {
         >
           <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
             <video
-              src="/src/assets/About/hero.mp4"
+              src={heroVideo}
               autoPlay
               muted
               loop
@@ -255,7 +257,7 @@ export default function About() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="flex flex-wrap items-center justify-center gap-8 lg:gap-12 mt-10"
             >
-              {stats.map((s, i) => (
+              {stats.map((s) => (
                 <div key={s.label} className="text-center">
                   <div
                     className="shi-d font-black mb-1"
@@ -311,7 +313,7 @@ export default function About() {
               >
                 <div className="relative rounded-[2.5rem] aspect-square overflow-hidden">
                   <video
-                    src="/src/assets/About/About-2.mp4"
+                    src={about2Video}
                     autoPlay
                     muted
                     loop

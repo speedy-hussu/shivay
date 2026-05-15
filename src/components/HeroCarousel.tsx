@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight, Handshake } from "lucide-react";
 import { NavLink } from "react-router";
+import hero1 from "@/assets/Home/hero1.mp4";
+import hero2 from "@/assets/Home/hero2.mp4";
+import hero3 from "@/assets/Home/hero3.mp4";
 
 interface Slide {
   image?: string;
@@ -17,7 +20,7 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    video: "/src/assets/Home/hero1.mp4",
+    video: hero1,
     tag: "Excellence in Export",
     title: "Shivaay",
     subtitle: "International",
@@ -28,7 +31,7 @@ const slides: Slide[] = [
     stat2: { value: "15+", label: "Years Experience" },
   },
   {
-    video: "/src/assets/Home/hero3.mp4",
+    video: hero3,
     tag: "Premium Grain Export",
     title: "Quality Grains",
     subtitle: "From India's Heartland",
@@ -39,7 +42,7 @@ const slides: Slide[] = [
     stat2: { value: "ISO", label: "Certified" },
   },
   {
-    video: "/src/assets/Home/hero2.mp4",
+    video: hero2,
     tag: "Global Agricultural Excellence",
     title: "From Farm",
     subtitle: "To World",

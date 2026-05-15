@@ -9,12 +9,6 @@ import {
   Award,
   Wheat,
   Send,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-  Youtube,
-  ArrowUpRight,
   ExternalLink,
 } from "lucide-react";
 import Layout from "@/components/Layout";

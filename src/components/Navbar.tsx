@@ -3,8 +3,8 @@ import { NavLink } from "react-router";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logos/logo.png";
-import logoScrolled from "@/assets/logos/logo-2.png";
+import logo from "@/assets/Logos/logo.png";
+import logoScrolled from "@/assets/Logos/logo-2.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
